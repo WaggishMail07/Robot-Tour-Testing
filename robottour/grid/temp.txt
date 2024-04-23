@@ -1,0 +1,140 @@
+package pathfinding.grid;
+
+
+import java.util.Random;
+
+
+public class GridSquare {
+    public enum Directions {NORTH, SOUTH, EAST, WEST};
+    public static GridSquare[][] course = new GridSquare[4][4];
+    private Random rand;
+    private boolean[] barriers = new boolean[4];
+    private int distanceToStart;
+    private int distanceToGateA;
+    private int distanceToGateB;
+    private int distanceToGateC;
+    private int distanceToEnd;
+    private int[] location = new int[2];
+    
+    
+    // CONSTRUCTORS
+
+
+    
+    // no arg constructor, makes a default course
+    public GridSquare() {}
+    // location only constructors
+    public GridSquare(int[] newLocation) {}
+    public GridSquare(int newX, int newY) {}
+    // barriers and location (arrays) constructor 
+    public GridSquare(boolean[] barriers, int[] newLocation) {}
+    // barriers and location (no arrays) constructor
+    public GridSquare(boolean northBarrier, boolean southBarrier, boolean eastBarrier, boolean westBarrier, int newX, int newY) {}
+
+
+
+    // SETTERS AND GETTERS
+
+
+    // method to set a specific part of the course to a new grid square object
+    public static void setCourse(GridSquare, int, int) {}
+    // getter for full course
+    public static GridSquare[][] getCourse() {}
+    // setter for barriers
+    public void setBarriers(boolean[]) {}
+    // getter for barriers
+    public boolean[] getBarriers() {}
+    // getters for specific barriers
+    public boolean hasNorthBarrier() {}
+    public boolean hasSouthBarrier() {}
+    public boolean hasEastBarrier() {}
+    public boolean hasWestBarrier() {}
+    // setter for distance to start
+    public void setDistanceToStart(int newDist) {}
+    // getter for distance to start
+    public int getDistanceToStart() {}
+    // setter for ditance to gate A
+    public void setDistanceToGateA(int newDist) {}
+    // getter for distance to gate A
+    public int getDistanceToGateA() {}
+    // setter for distance to gate B
+    public void setDistanceToGateB(int newDist) {}
+    // getter for distance to gate B
+    public int getDistanceToGateB() {}
+    // setter for distance to gate C
+    public void setDistanceToGateC(int newDist) {}
+    // getter for distance to gate C
+    public int getDistanceToGateC() {}
+    // setter for distance to end
+    public void setDistanceToEnd(int newDist) {}
+    // getter for distance to end
+    public int getDistanceToEnd() {}
+    // getter for location
+    public int[] getLocation() {}
+    //getter for "x" coord
+    public int getX() {}
+    // getter for "y" coord
+    public int getY() {}
+    // getter for edges (N, S, E, W), returns true if one side of GridSquare is the endge of the course
+    public boolean[] getEdges() {}
+    // getter for individual edges
+    public boolean isNorthEdge() {}
+    public boolean isSouthEdge() {}
+    public boolean isEastEdge() {}
+    public boolean isWestEdge() {}
+    // validates that a location is valid
+    public boolean isValidLocation(int[]) {}
+    // validates that the course is full
+    private boolean fullCourse() {
+        for (int x = 0; x < 4; x++) { // goes through all x values
+            for (int y = 0; y < 4; y++) { // goes through all y values
+                if (course[x][y] == null) { // checks fi a spot in course is null (default value)
+                    return false; // if a null is found returns false to show that the course is incomplete
+                }
+            }
+        }
+        return true; // returns true if no spots are found with null
+    }
+    // generates the distance from the start for all grid squares
+    public static void generateDistFromStart() {
+        boolean generatingDistances = true;
+        int distancesGenerated = 0;
+        do {
+            distancesGenerated = 0;
+            for (int x = 0; x < 4; x++) { // goes through x coords
+                for (int y = 0; y < 4; y++) { // goes through y coords
+                    if (!(course[x][y].isNorthEdge())) { // checks to make sure that accessing a north square will not cause an error
+                        if (
+                           // checks that course[x][y] does not have a north barrier and that the GridSquare to the north does not have the default dist value
+                           (!(course[x][y].hasNorthBarrier()) && course[x][y+1].getDistanceToStart() != -1) &&
+                           // checks that course[x][y] is at the default dist value or has a higher dist value then the GridSquare to the north
+                           (course[x][y].getDistanceToStart() == -1 || course[x][y+1].getDistanceToStart() < course[x][y].getDistanceToStart())
+                        ) {
+                            // checks that 
+                            if () {
+                                course[x][y].setDistanceToStart(course[x][y+1].getDistanceToStart() + 1);
+                            }
+                        }
+                        
+                    }
+
+
+                    // LAST STEPS
+                    // check if the current GridSquare has gotten its distance value (-1 = default, no distance)
+                    if (course[x][y].getDistanceToStart() != -1) {
+                        distancesGenerated += 1; // add 1 to distancesGenerated to show that another square has had its distance set
+                        // checks to see if distances generated has reached 16
+                        if (16 <= distancesGenerated) {
+                            // sets generating Distances to false to show that it is done
+                            generatingDistances = false;
+                            
+                        }
+                    }
+
+                }
+            }
+        } while (generatingDistances);
+    }
+//    protected boolean generateDistFromStart(GridSquare directions) {}
+//    public static String printGridDisplay(GridSquare interiorDisplaySelector) {}
+}
