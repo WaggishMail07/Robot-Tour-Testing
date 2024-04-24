@@ -1,8 +1,4 @@
-package robottour;
-
-
-import robottour.grid.DefaultGridSquare;
-import robottour.grid.GridSquare;
+package robottourpathfinding;
 
 
 public class Run {

@@ -1,5 +1,5 @@
-package robottour.grid;
-import robottour.grid.*;
+package robottourpathfinding;
+import robottourpathfinding.*;
 public class DefaultGridSquare extends GridSquare {
     private static final int[][] keyPoints = {{1, 0}, {0, 1}, {3, 1}, {2, 3}, {1, 3}};
     
@@ -18,7 +18,12 @@ public class DefaultGridSquare extends GridSquare {
         }
         course = defaultGrid;
     }
-    // real constructor
+
+    // normal constructor
+    /**
+     * @param x x cooridinate of Grid square being created
+     * @param y y coordinate of GridSquare being created
+     */
     private DefaultGridSquare(int x, int y) {
         super(
         hasNorthBarrier(y, x), // set true if it has a north barrier, false if not
@@ -41,6 +46,10 @@ public class DefaultGridSquare extends GridSquare {
 
 
     // getter for all key points
+    /**
+     * @WaggishMail07
+     * @return int[][]
+     */
     public int[][] getKeyPoints() {
         return keyPoints;
     } 

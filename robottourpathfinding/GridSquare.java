@@ -1,4 +1,4 @@
-package robottour.grid;
+package robottourpathfinding;
 
 
 import java.util.Random;

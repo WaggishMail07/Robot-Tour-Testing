@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"robottourpathfinding","l":"Course"},{"p":"robottourpathfinding","l":"DefaultGridSquare"},{"p":"robottourpathfinding","l":"GridSquare"},{"p":"robottourpathfinding","l":"GridSquare.interiorDisplaySelector"},{"p":"robottourpathfinding","l":"Run"}]
